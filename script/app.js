@@ -1,37 +1,14 @@
 
 /*-------------------------------- Constants --------------------------------*/
 const winningCombos = [
-    ['X','','',
-     '','X','',
-     '','','X'], 
-
-    ['','','X',
-     '','X','',
-     'X','',''],
-
-    ['','','X',
-     '','','X',
-     '','','X'], 
-
-    ['','X','',
-     '','X','',
-     '','X',''],  
-
-    ['X','','',
-     'X','','',
-     'X','',''], 
-
-    ['','','',
-     '','','',
-     'X','X','X'],  
-     
-    ['','','',
-     'X','X','X',
-     '','',''], 
-
-    ['X','X','X',
-     '','','',
-     '','',''], 
+    [0 , 1, 2], 
+    [3 , 4, 5], 
+    [7 , 8, 9], 
+    [1, 4, 7], 
+    [2, 5, 8], 
+    [3, 6, 9],
+    [1, 5, 9], 
+    [3, 5, 7]
 ]
 
 
@@ -82,6 +59,7 @@ function updateMessage(){
 
 function placePiece(index){
     board[index] = turn
+
 }
 
 function handleClick(event){
@@ -91,13 +69,21 @@ function handleClick(event){
 const squareIndex = event.target.id
 if(board[squareIndex] !== '') {
     return 
+} else if (board[squareIndex] === 'X' || board[squareIndex] === 'O'){
+    return 
 }
+
+
 placePiece(squareIndex)
 // console.log(squareIndex)
 }
 
 function checkForWinner(){
-    if (winner ===)
+    for (w = 0; w<winningCombos.length ; w++) {
+    if (winningCombos[w] === ''){
+        if ()
+    }
+    }   
 }
 
 function render(){
@@ -115,8 +101,8 @@ function init(){
  tie = false
     render()
 
-
 }
+
 init();
 /*----------------------------- Event Listeners -----------------------------*/
 squareElems.forEach(function(OnesqrElm){
