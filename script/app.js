@@ -3,12 +3,12 @@
 const winningCombos = [
     [0 , 1, 2], 
     [3 , 4, 5], 
-    [7 , 8, 9], 
+    [6 , 7, 8], 
+    [0, 3, 6], 
     [1, 4, 7], 
-    [2, 5, 8], 
-    [3, 6, 9],
-    [1, 5, 9], 
-    [3, 5, 7]
+    [2, 5, 8],
+    [0, 4, 8], 
+    [2, 4, 6]
 ]
 
 
@@ -102,7 +102,7 @@ function checkForWinner(){
 }}
 
 function checkForTie(){
-    if (winner = true){
+    if (winner === true){
         return checkForTie()
     }
     for (e = 0; e<board.length ; e++){
@@ -154,4 +154,4 @@ OnesqrElm.addEventListener('click', handleClick)
 
 
 
-// document.addEventListener('DOMContentLoaded', init) 
+document.addEventListener('DOMContentLoaded', init) 
