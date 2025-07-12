@@ -78,6 +78,7 @@ placePiece(squareIndex)
 // console.log(squareIndex)
 checkForWinner()
 checkForTie()
+switchPlayerTurn()
 
 }
 
@@ -102,7 +103,7 @@ function checkForWinner(){
 
 function checkForTie(){
     if (winner = true){
-        return
+        return checkForTie()
     }
     for (e = 0; e<board.length ; e++){
         if(board[e] === ''){
@@ -112,6 +113,18 @@ function checkForTie(){
         }
     }
 
+}
+
+function switchPlayerTurn(){
+    if (winner = true) {
+        return switchPlayerTurn()
+    } else if (winner = false){
+        if (turn === 'X'){
+            turn = 'O'
+        } else if (turn === 'O'){
+            turn = 'X'
+        }
+    }
 }
 
 
