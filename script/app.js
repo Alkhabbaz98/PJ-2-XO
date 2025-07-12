@@ -76,15 +76,44 @@ if(board[squareIndex] !== '') {
 
 placePiece(squareIndex)
 // console.log(squareIndex)
+checkForWinner()
+checkForTie()
+
 }
+
+
+
 
 function checkForWinner(){
     for (w = 0; w<winningCombos.length ; w++) {
     if (winningCombos[w] === ''){
-        if ()
+        if ((board[0] !== '' && board[0] === board[1] && board[0] === board[2]) ||
+    (board[3] !== '' && board[3] === board[4] && board[3] === board[5]) ||
+    (board[6] !== '' && board[6] === board[7] && board[6] === board[8]) ||
+    (board[0] !== '' && board[0] === board[3] && board[0] === board[6]) ||
+    (board[1] !== '' && board[1] === board[4] && board[1] === board[7]) ||
+    (board[2] !== '' && board[2] === board[5] && board[2] === board[8]) ||
+    (board[0] !== '' && board[0] === board[4] && board[0] === board[8]) ||
+    (board[2] !== '' && board[2] === board[4] && board[2] === board[6])){
+        winner = true
     }
     }   
+}}
+
+function checkForTie(){
+    if (winner = true){
+        return
+    }
+    for (e = 0; e<board.length ; e++){
+        if(board[e] === ''){
+            tie = false
+        } else {
+            tie = true 
+        }
+    }
+
 }
+
 
 function render(){
     updateBoard()
