@@ -14,11 +14,16 @@ body {
   margin: auto;
 }
 
-h1 ,  h2 {
+h1 {
+  text-align: center;
+}
+
+h2 {
   color: red;
   
   text-align: center;
 }
+
 
 .sqr {
   width: 30%;
@@ -47,5 +52,6 @@ button {
   font-size: 15px;
   text-align: center;
   /* margin: 2px; */
+  box-shadow: 2px 11px 12px rgba(0, 0, 0, 0.4);
 }
 

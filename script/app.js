@@ -39,22 +39,22 @@ for (i = 0; i<board.length ; i++){
 }
 
 function updateMessage(){
-    if (winner === false && tie === false){ 
-        if(turn === 'X'){
-        messageEl.textContent = 'Now it is Player X turn'
-    } else {
-        messageEl.textContent = 'Now O turn'
+    if (winner === false && tie === false && turn === 'X'){ 
+        return messageEl.textContent = 'Now it is Player X turn'
+    } else  if (winner === false && tie === false && turn === 'O') {
+       return messageEl.textContent = 'Now O turn'
     }
-    } else if (winner === false && tie === true){
+    else if (winner === false && tie === true){
         messageEl.textContent = 'It is a TIE'
-    } else {
-        if(turn === 'X'){
-        messageEl.textContent = 'X won'
+    } 
+    else  if (winner === true && turn === 'X'){
+       return messageEl.textContent = 'X won'
     } else {
         messageEl.textContent = 'O won'
+        }
     }
-    }
-}
+
+
 // console.log(updateMessage())
 
 function placePiece(index){
@@ -67,9 +67,7 @@ function handleClick(event){
     //     const squareIndex = squareElems[OnesqrElm].event.target.id
     // })
 const squareIndex = event.target.id
-if(board[squareIndex] !== '') {
-    return 
-} else if (board[squareIndex] === 'X' || board[squareIndex] === 'O'){
+if(board[squareIndex] !== '' || winner === true) {
     return 
 }
 
@@ -79,6 +77,7 @@ placePiece(squareIndex)
 checkForWinner()
 checkForTie()
 switchPlayerTurn()
+render()
 
 }
 
@@ -86,9 +85,7 @@ switchPlayerTurn()
 
 
 function checkForWinner(){
-    for (w = 0; w<winningCombos.length ; w++) {
-    if (winningCombos[w] === ''){
-        if ((board[0] !== '' && board[0] === board[1] && board[0] === board[2]) ||
+    if ((board[0] !== '' && board[0] === board[1] && board[0] === board[2]) ||
     (board[3] !== '' && board[3] === board[4] && board[3] === board[5]) ||
     (board[6] !== '' && board[6] === board[7] && board[6] === board[8]) ||
     (board[0] !== '' && board[0] === board[3] && board[0] === board[6]) ||
@@ -99,33 +96,27 @@ function checkForWinner(){
         winner = true
     }
     }   
-}}
+
 
 function checkForTie(){
     if (winner === true){
-        return checkForTie()
+        return 
     }
-    for (e = 0; e<board.length ; e++){
-        if(board[e] === ''){
-            tie = false
-        } else {
-            tie = true 
+        if(!board.includes('')){
+            tie = true
         }
-    }
-
 }
 
 function switchPlayerTurn(){
-    if (winner = true) {
-        return switchPlayerTurn()
-    } else if (winner = false){
-        if (turn === 'X'){
+    if (winner === true) {
+        return 
+    }
+    if (turn === 'X'){
             turn = 'O'
-        } else if (turn === 'O'){
+    } else {
             turn = 'X'
         }
     }
-}
 
 
 function render(){
@@ -141,7 +132,7 @@ function init(){
  turn = 'X'
  winner = false
  tie = false
-    render()
+render()
 
 }
 
