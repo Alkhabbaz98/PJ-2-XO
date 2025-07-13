@@ -35,23 +35,40 @@ h2 {
   border-radius: 10%;
 }
 
-button {
-  /* margin: auto;  */
-   /* width: 150px; */
-  /* padding: 10px; */
-  margin-left: 46%;
-  margin-top: 10px; 
-  
+#Reset {
   border-radius: 10%;
   background-color: rgb(21, 115, 255);
   color: azure;
-
-    /* width: 30%; */
+  
+  /* width: 30%; */
   aspect-ratio: 1/1;
   border: 3px solid black;
   font-size: 15px;
   text-align: center;
-  /* margin: 2px; */
+  margin-left: 46%;
   box-shadow: 2px 11px 12px rgba(0, 0, 0, 0.4);
+  /* margin: 0 auto; */
 }
 
+.Set {
+   border-radius: 10%;
+  background-color: rgb(21, 115, 255);
+  color: azure;
+  
+  /* width: 30%; */
+  aspect-ratio: 1/1;
+  border: 3px solid black;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 46%;
+  box-shadow: 2px 11px 12px rgba(0, 0, 0, 0.4);
+  /* margin: 0 auto; */
+}
+
+.hidden {
+  /* visibility: hidden; */
+  cursor: not-allowed;
+    background-color: dimgrey;
+  color: linen;
+  opacity: 1;
+}

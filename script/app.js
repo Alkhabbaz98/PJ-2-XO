@@ -22,6 +22,9 @@ let tie
 /*------------------------ Cached Element References ------------------------*/
 const squareElems = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
+const SetX = document.querySelector('#SetX')
+const SetO = document.querySelector('#SetO')
+
 console.log(squareElems[0])
 /*-------------------------------- Functions --------------------------------*/
 
@@ -38,16 +41,18 @@ for (i = 0; i<board.length ; i++){
 }
 }
 
-function updateMessage(){
-    if (winner === false && tie === false && turn === 'X'){ 
-        return messageEl.textContent = 'Now it is Player X turn'
-    } else  if (winner === false && tie === false && turn === 'O') {
+function updateMessage(squareIndex){
+    if (winner === false && tie === false && turn === ''){ 
+        return messageEl.textContent = 'Choose X or O to Play'
+    } else if (winner === false && tie === false && turn === 'O') {
        return messageEl.textContent = 'Now O turn'
+    } else if (winner === false && tie === false && turn === 'X'){
+        return messageEl.textContent = 'Now X turn'
     }
     else if (winner === false && tie === true){
         messageEl.textContent = 'It is a TIE'
     } 
-    else  if (winner === true && turn === 'X'){
+    else  if (winner === true && turn === 'X' && board[squareIndex] != ''){
        return messageEl.textContent = 'X won'
     } else {
         messageEl.textContent = 'O won'
@@ -58,11 +63,16 @@ function updateMessage(){
 // console.log(updateMessage())
 
 function placePiece(index){
-    board[index] = turn
+    if(!turn) {
+        return;
+    } else {
+        board[index] = turn
+    }
 
 }
 
 function handleClick(event){
+        if(!turn) return;
     // squareElems.forEach(function(OnesqrElm){
     //     const squareIndex = squareElems[OnesqrElm].event.target.id
     // })
@@ -124,15 +134,47 @@ function render(){
     updateMessage()
 }
 
+function SetOfun(){
+    if(turn) {
+        SetX.classList.add("hidden")
+        SetO.classList.add("hidden")
+        return ;
+    } else {
+        turn = 'O'
+        // messageEl.textContent = 'Now O turn'
+        SetX.classList.add("hidden")
+        SetO.classList.add("hidden")
+    }
+    messageEl.textContent = 'Now O turn'
+    // console.log(turn)
+}
+function SetXfun(){
+    if(turn) {
+        // messageEl.textContent = 'Now X turn'
+        SetO.classList.add("hidden")
+        SetX.classList.add("hidden")
+        return;
+    } else {
+        turn = 'X'
+        SetO.classList.add("hidden")
+        SetX.classList.add("hidden")
+    }
+    // console.log(turn)
+    messageEl.textContent = 'Now X turn'
+    
+}
+
 function init(){
  board = ['','','',
           '','','',
           '','','']
 
- turn = 'X'
+ turn = ''
  winner = false
  tie = false
-render()
+
+
+ render()
 
 }
 
@@ -140,7 +182,8 @@ init();
 /*----------------------------- Event Listeners -----------------------------*/
 squareElems.forEach(function(OnesqrElm){
 OnesqrElm.addEventListener('click', handleClick)
-
+SetX.addEventListener('click',SetXfun)
+SetO.addEventListener('click',SetOfun)
 })
 
 
