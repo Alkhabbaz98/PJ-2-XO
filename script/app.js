@@ -22,8 +22,8 @@ let tie
 /*------------------------ Cached Element References ------------------------*/
 const squareElems = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
-const SetX = document.querySelector('#SetX')
-const SetO = document.querySelector('#SetO')
+const SetX = document.querySelector('.SetX')
+const SetO = document.querySelector('.SetO')
 
 console.log(squareElems[0])
 /*-------------------------------- Functions --------------------------------*/
