@@ -14,9 +14,40 @@ body {
   gap: 7px;
 }
 
+
+
+.HowToPlay {
+  display: none;
+  background-color: slategray;
+  margin: 0 auto;
+  width: 50%;
+}
+ 
+
+/* .HowToPlay:hover {
+  display:block;
+  background-color: slategray;
+  margin: 0 auto;
+  width: 50%;
+} */
+
+
+span {
+  display: flex;
+  justify-content: end;
+  margin-right: 17px;
+  font-size: x-large;
+}
+
+p {
+  margin-left: 14px;
+}
+
+
 h1 {
   text-align: center;
 }
+
 
 h2 {
   color: red;

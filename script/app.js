@@ -24,12 +24,17 @@ const squareElems = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
 const SetX = document.querySelector('.SetX')
 const SetO = document.querySelector('.SetO')
+const HowToPlayBtn = document.querySelector('#HowToPlayBtn')
+const HowToPlay = document.querySelector('.HowToPlay')
+const closed = document.querySelector('.closed')
 
 console.log(squareElems[0])
 /*-------------------------------- Functions --------------------------------*/
 
 
-
+function clickInstruction() {
+    HowToPlay.style.display = "block"
+}
 
 function updateBoard(){
 for (i = 0; i<board.length ; i++){
@@ -91,8 +96,19 @@ render()
 
 }
 
+// HowToPlayBtn.onclick = function(event) {
+//     if(event.target === HowToPlay){
+//         HowToPlay.style.display = "none"
+//     }
+// }
 
+function clickInstruction() {
+    HowToPlay.style.display = "block"
+}
 
+function CloseWindow(){
+    HowToPlay.style.display = "none"
+}
 
 function checkForWinner(){
     if ((board[0] !== '' && board[0] === board[1] && board[0] === board[2]) ||
@@ -185,6 +201,9 @@ OnesqrElm.addEventListener('click', handleClick)
 SetX.addEventListener('click',SetXfun)
 SetO.addEventListener('click',SetOfun)
 })
+
+HowToPlayBtn.addEventListener('click', clickInstruction)
+closed.addEventListener('click', CloseWindow)
 
 
 
