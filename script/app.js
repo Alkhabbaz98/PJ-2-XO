@@ -18,14 +18,15 @@ let board
 let Playerturn 
 let winner
 let tie 
-let CPUturn
+let CPUturn 
+// let CPUturn
 // let CPUmark
 // let playerVplayer
 // let cpu = [0, 1 , 2 , 3 , 4, 5 , 6, 7, 8]
 /*------------------------ Cached Element References ------------------------*/
 const squareElems = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
-const SetX = document.querySelector('.SetX')
+const SetPlayer = document.querySelector('.SetPlayer')
 // const SetO = document.querySelector('.SetO')
 const HowToPlayBtn = document.querySelector('#HowToPlayBtn')
 const HowToPlay = document.querySelector('.HowToPlay')
@@ -97,7 +98,9 @@ function handleClick(event){
         // if(winner) return
         checkForTie()
         checkForWinner()
-        CPUfun()
+        if (CPUturn === true) {
+            CPUfun()
+        }
         checkForTie()
         checkForWinner()
         console.log('2', {winner})
@@ -138,14 +141,6 @@ function checkForWinner(){
 
 
 function checkForTie(){
-
-      const isFilled = board.every((tile)=>{
-        return tile !== ""
-    })
-    if (Playerturn === 'O' && winner === false && isFilled){
-        console.log("tie")
-        return
-    }
     if (winner === true){
         return 
     }
@@ -171,42 +166,51 @@ function render(){
     updateMessage()
 }
 
-// function SetOfun(){
-//     // playerVplayer = true 
-//     if(Playerturn) {
-//         SetX.classList.add("hidden")
-//         SetO.classList.add("hidden")
-//         return ;
-//     } else {
-//         Playerturn = 'O'
-//         // messageEl.textContent = 'Now O turn'
-//         SetX.classList.add("hidden")
-//         SetO.classList.add("hidden")
-//     }
-//     messageEl.textContent = 'Now O turn'
-//     // console.log(turn)
-// }
-function SetXfun(){
-//    playerVplayer = true 
+function SetCPU(){
+    // playerVplayer = true 
+    if(Playerturn) {
+        CPU.classList.add("hidden")
+        SetPlayer.classList.add("hidden")
+        return ;
+    } else {
+        Playerturn = 'O'
+        // messageEl.textContent = 'Now O turn'
+        SetPlayer.classList.add("hidden")
+        CPU.classList.add("hidden")
+    }
+    messageEl.textContent = 'Now O turn'
+    // console.log(turn)
+}
+function SetPlayerfun(){
+    //    playerVplayer = true 
     if(Playerturn) {
         // messageEl.textContent = 'Now X turn'
         // SetO.classList.add("hidden")
-        SetX.classList.add("hidden")
+        SetPlayer.classList.add("hidden")
+        CPU.classList.add("hidden")
         return;
     } else {
         Playerturn = 'X'
         // SetO.classList.add("hidden")
-        SetX.classList.add("hidden")
+        SetPlayer.classList.add("hidden")
+        CPU.classList.add("hidden")
     }
     // console.log(turn)
     messageEl.textContent = 'Now X turn'
     
 }
 
+function setCpuTrue() {
+    CPUturn = true;
+    handleClick()
+    SetCPU()
+    switchPlayerTurn()
+}
+
 
 function CPUfun(){
-
-      const isFilled = board.every((tile)=>{
+    SetCPU()
+    const isFilled = board.every((tile)=>{
         return tile !== ""
     })
     if (Playerturn === 'O' && winner === false && isFilled){
@@ -223,17 +227,9 @@ function CPUfun(){
     if (board[randomInd]) {
         return CPUfun()
     } else if (board[randomInd] === '' && winner === true){
-        return
-    // } else if (!board.includes('') && winner === false){
-    //     checkForTie()
-    //     return
-
-  
+        return  
     } 
-    
-
-
-    board[randomInd] = 'O'
+     board[randomInd] = 'O'
     // checkForTie()
     switchPlayerTurn()
    }
@@ -249,7 +245,7 @@ function init(){
  Playerturn = ''
  winner = false
  tie = false
- CPUturn = ''
+ CPUturn = false
   
 
 render()
@@ -260,13 +256,13 @@ init();
 /*----------------------------- Event Listeners -----------------------------*/
 squareElems.forEach(function(OnesqrElm){
 OnesqrElm.addEventListener('click', handleClick)
-SetX.addEventListener('click',SetXfun)
+SetPlayer.addEventListener('click',SetPlayerfun)
 // SetO.addEventListener('click',SetOfun)
 })
 
 HowToPlayBtn.addEventListener('click', clickInstruction)
 closed.addEventListener('click', CloseWindow)
-CPU.addEventListener('Click', CPUfun)
+CPU.addEventListener('click', setCpuTrue)
 
 
 document.addEventListener('DOMContentLoaded', init) 
