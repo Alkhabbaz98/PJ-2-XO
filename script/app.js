@@ -18,7 +18,9 @@ let board
 let turn 
 let winner
 let tie 
-
+// let CPUmark
+// let playerVplayer
+// let cpu = [0, 1 , 2 , 3 , 4, 5 , 6, 7, 8]
 /*------------------------ Cached Element References ------------------------*/
 const squareElems = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
@@ -27,9 +29,13 @@ const SetO = document.querySelector('.SetO')
 const HowToPlayBtn = document.querySelector('#HowToPlayBtn')
 const HowToPlay = document.querySelector('.HowToPlay')
 const closed = document.querySelector('.closed')
+const CPU = document.querySelector('.CPU')
 
 console.log(squareElems[0])
 /*-------------------------------- Functions --------------------------------*/
+
+
+
 
 
 function clickInstruction() {
@@ -41,8 +47,6 @@ for (i = 0; i<board.length ; i++){
 
     squareElems[i].textContent = board[i]
 
-    // if (board[i] === squareElems[i]){
-    // }
 }
 }
 
@@ -58,9 +62,9 @@ function updateMessage(squareIndex){
         messageEl.textContent = 'It is a TIE'
     } 
     else  if (winner === true && turn === 'X' && board[squareIndex] != ''){
-       return messageEl.textContent = 'X won'
+       return messageEl.textContent = 'O won'
     } else {
-        messageEl.textContent = 'O won'
+        messageEl.textContent = 'X won'
         }
     }
 
@@ -73,6 +77,7 @@ function placePiece(index){
     } else {
         board[index] = turn
     }
+    switchPlayerTurn()
 
 }
 
@@ -81,26 +86,22 @@ function handleClick(event){
     // squareElems.forEach(function(OnesqrElm){
     //     const squareIndex = squareElems[OnesqrElm].event.target.id
     // })
-const squareIndex = event.target.id
-if(board[squareIndex] !== '' || winner === true) {
-    return 
+        const squareIndex = event.target.id
+        if(board[squareIndex] !== '' || winner === true) {
+            return 
+}
+
+        placePiece(squareIndex)
+        CPUfun()
+        // console.log(squareIndex)
+        // switchPlayerTurn()
+        checkForWinner()
+        checkForTie()
+        render()
+
 }
 
 
-placePiece(squareIndex)
-// console.log(squareIndex)
-checkForWinner()
-checkForTie()
-switchPlayerTurn()
-render()
-
-}
-
-// HowToPlayBtn.onclick = function(event) {
-//     if(event.target === HowToPlay){
-//         HowToPlay.style.display = "none"
-//     }
-// }
 
 function clickInstruction() {
     HowToPlay.style.display = "block"
@@ -141,7 +142,7 @@ function switchPlayerTurn(){
             turn = 'O'
     } else {
             turn = 'X'
-        }
+    }
     }
 
 
@@ -151,6 +152,7 @@ function render(){
 }
 
 function SetOfun(){
+    // playerVplayer = true 
     if(turn) {
         SetX.classList.add("hidden")
         SetO.classList.add("hidden")
@@ -165,6 +167,7 @@ function SetOfun(){
     // console.log(turn)
 }
 function SetXfun(){
+//    playerVplayer = true 
     if(turn) {
         // messageEl.textContent = 'Now X turn'
         SetO.classList.add("hidden")
@@ -180,6 +183,27 @@ function SetXfun(){
     
 }
 
+
+function CPUfun(){
+    console.log('CPU Fun is running')
+    console.log(winner)
+    // playerVplayer = false
+    // if (playerVplayer === false){
+    if(turn === 'O' && winner === false){
+    let randomInd = Math.floor(Math.random() * 9)
+    console.log(typeof board[randomInd])
+    if (board[randomInd]) {
+        return CPUfun()
+    } else if (board[randomInd] === '' && winner === true){
+        return
+    }
+    board[randomInd] = 'O'
+    switchPlayerTurn()
+   }
+}
+
+
+
 function init(){
  board = ['','','',
           '','','',
@@ -188,7 +212,8 @@ function init(){
  turn = ''
  winner = false
  tie = false
-
+//  let CPUmark = 'O'
+ let playerVplayer 
 
  render()
 
@@ -204,7 +229,7 @@ SetO.addEventListener('click',SetOfun)
 
 HowToPlayBtn.addEventListener('click', clickInstruction)
 closed.addEventListener('click', CloseWindow)
-
+CPU.addEventListener('Click', CPUfun)
 
 
 document.addEventListener('DOMContentLoaded', init) 

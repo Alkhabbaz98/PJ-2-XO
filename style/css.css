@@ -108,6 +108,17 @@ h2 {
   margin-left: 10%;
 }
 
+.CPU {
+  background-color: rgb(228, 56, 56);
+  border-radius: 10px;
+  height: 30px;
+  width: 11%;
+  font-size: 15px;
+  text-align: center;
+  box-shadow: 2px 11px 12px rgba(0, 0, 0, 0.4);
+  margin-left: 10%;
+}
+
 .hidden {
   /* visibility: hidden; */
   cursor: not-allowed;
