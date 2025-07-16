@@ -1,5 +1,5 @@
 
-<h1>1DESCRIPTION</h1> 
+<h1>DESCRIPTION</h1> 
 <hr>
 <p>Tic-Tac-Toe is a very simple game where the user has to connect a straight line by using either 
 X or an O. The board which played at is a 3v3 board (9 Total boxes), and the boxes are where X or O are places. 
