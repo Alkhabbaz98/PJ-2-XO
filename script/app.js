@@ -255,6 +255,8 @@ render()
 }
 
 init();
+
+
 /*----------------------------- Event Listeners -----------------------------*/
 squareElems.forEach(function(OnesqrElm){
 OnesqrElm.addEventListener('click', handleClick)

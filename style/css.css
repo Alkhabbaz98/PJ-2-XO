@@ -1,6 +1,5 @@
 body {
   background-color: gainsboro;
-  /* Use a system font, if none are available use an available sans-sarif */
   font-family: system-ui, sans-serif;
 
 }
@@ -9,7 +8,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 325px;
-  /* max-width: 50%; */
   margin: auto;
   gap: 7px;
 }
@@ -82,7 +80,6 @@ span:hover {
 }
 
 p {
-  /* height: 200px; */
   margin-left: 14px;
 }
 
@@ -156,8 +153,7 @@ h2 {
   border: 3px solid black;
   font-size: 64px;
   text-align: center;
-  /* margin: 2px; */
-  /* border-radius: 10%; */
+
 }
 
 #Reset {
@@ -167,10 +163,8 @@ h2 {
   color: black;
   margin-top: 12px;
   aspect-ratio: 2/1;
-  /* border: 3px solid black; */
   font-size: 15px;
   text-align: center;
-  /* box-shadow: 2px 11px 12px rgba(0, 0, 0, 0.4); */
   cursor: pointer;
 }
 
@@ -203,21 +197,9 @@ h2 {
 
 
 .SetPlayer:hover {
-  /* display:block; */
   background-color: rgb(255, 255, 255);
 }
 
-
-/* .SetO {
-  background-color: rgb(228, 56, 56);
-  border-radius: 10px;
-  height: 30px;
-  width: 11%;
-  font-size: 15px;
-  text-align: center;
-  box-shadow: 2px 11px 12px rgba(0, 0, 0, 0.4);
-  margin-left: 10%;
-} */
 
 #xo-buttons {
   display: flex;
@@ -240,13 +222,12 @@ h2 {
 }
 
 .CPU:hover {
-  /* display:block; */
   background-color: rgb(255, 255, 255);
 }
 
 
 .hidden {
-  /* visibility: hidden; */
+
   cursor: not-allowed;
   background-color: dimgrey;
   color: black;
