@@ -28,11 +28,16 @@ const squareElems = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
 const SetPlayer = document.querySelector('.SetPlayer')
 // const SetO = document.querySelector('.SetO')
-const HowToPlayBtn = document.querySelector('#HowToPlayBtn')
+const HTPbtn = document.querySelector('#HTPbtn')
 const HowToPlay = document.querySelector('.HowToPlay')
 const closed = document.querySelector('.closed')
 const CPU = document.querySelector('.CPU')
-
+const container = document.querySelector('.container')
+const winPopX = document.querySelector('.winPopX')
+const winPopO = document.querySelector('.winPopO')
+const winPopCPU = document.querySelector('.winPopCPU')
+const PopTie = document.querySelector('.PopTie')
+const endingBoard = document.querySelector('.board')
 console.log(squareElems[0])
 /*-------------------------------- Functions --------------------------------*/
 
@@ -41,7 +46,7 @@ console.log(squareElems[0])
 
 
 function clickInstruction() {
-    HowToPlay.style.display = "block"
+    HTPbtn.style.display = "block"
 }
 
 function updateBoard(){
@@ -103,6 +108,7 @@ function handleClick(event){
         }
         checkForTie()
         checkForWinner()
+        winPop()
         console.log('2', {winner})
         // console.log(squareIndex)
         // switchPlayerTurn()
@@ -119,10 +125,17 @@ function handleClick(event){
 
 function clickInstruction() {
     HowToPlay.style.display = "block"
+    container.style.display = "block"
 }
 
 function CloseWindow(){
     HowToPlay.style.display = "none"
+    container.style.display = "none"
+    winPopX.style.display = "none"
+    winPopO.style.display = "none"
+    PopTie.style.display = "none"
+    winPopCPU.style.display = "none"
+    
 }
 
 function checkForWinner(){
@@ -221,7 +234,7 @@ function CPUfun(){
     console.log(winner)
     // playerVplayer = false
     // if (playerVplayer === false){
-    if(Playerturn === 'O' && winner === false){
+    if(winner === false){
     let randomInd = Math.floor(Math.random() * 9)
     console.log(typeof board[randomInd])
     if (board[randomInd]) {
@@ -234,6 +247,31 @@ function CPUfun(){
     switchPlayerTurn()
    }
 }
+
+function winPop(){
+    if (winner === true && Playerturn === 'O'){
+        winPopX.style.display = "block"
+        endingBoard.style.display = "none"
+
+    } else if (CPUturn === true && tie === false && winner === true){
+       
+        winPopCPU.style.display = "block"
+        endingBoard.style.display = "none"
+
+    }
+     else if (winner === true && Playerturn === 'X'){
+        winPopO.style.display = "block"
+        endingBoard.style.display = "none"
+
+    } else if (tie === true) {
+        PopTie.style.display = "block"
+        endingBoard.style.display = "none"
+
+    }
+
+
+}
+
 
 
 
@@ -260,9 +298,15 @@ SetPlayer.addEventListener('click',SetPlayerfun)
 // SetO.addEventListener('click',SetOfun)
 })
 
-HowToPlayBtn.addEventListener('click', clickInstruction)
+HTPbtn.addEventListener('click', clickInstruction)
 closed.addEventListener('click', CloseWindow)
 CPU.addEventListener('click', setCpuTrue)
-
+winPopX.addEventListener('click', CloseWindow)
+winPopO.addEventListener('click', CloseWindow)
+PopTie.addEventListener('click', CloseWindow)
+winPopCPU.addEventListener('click', CloseWindow)
 
 document.addEventListener('DOMContentLoaded', init) 
+
+
+
