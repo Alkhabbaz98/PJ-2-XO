@@ -47,8 +47,9 @@ for (i = 0; i<board.length ; i++){
 }
 
 function updateMessage(squareIndex){
+    
     if (winner === false && tie === false && Playerturn === ''){ 
-        return messageEl.textContent = 'Choose X or O to Play'
+        return messageEl.textContent = 'Pick vsCPU or vsPlayer to Play'
     } else if (winner === false && tie === false && Playerturn === 'O') {
        return messageEl.textContent = 'Now O turn'
     } else if (winner === false && tie === false && Playerturn === 'X'){
@@ -118,7 +119,7 @@ function checkForWinner(){
     (board[2] !== '' && board[2] === board[5] && board[2] === board[8]) ||
     (board[0] !== '' && board[0] === board[4] && board[0] === board[8]) ||
     (board[2] !== '' && board[2] === board[4] && board[2] === board[6])){
-        console.log('winner should go true')
+        
         winner = true
     }
     }   
@@ -161,7 +162,7 @@ function SetCPU(){
         SetPlayer.classList.add("hidden")
         CPU.classList.add("hidden")
     }
-    messageEl.textContent = 'Now O turn'
+    messageEl.textContent = 'Now X turn'
 
 }
 function SetPlayerfun(){
