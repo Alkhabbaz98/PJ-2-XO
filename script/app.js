@@ -80,7 +80,7 @@ function handleClick(event){
         const squareIndex = event.target.id
         if(board[squareIndex] !== '' || winner === true) {
             return 
-}
+        }
         placePiece(squareIndex)
         checkForTie()
         checkForWinner()
@@ -195,7 +195,6 @@ function CPUfun(){
         return tile !== ""
     })
     if (Playerturn === 'O' && winner === false && isFilled){
-        console.log("tie")
         return
     }
 
@@ -261,9 +260,8 @@ init();
 /*----------------------------- Event Listeners -----------------------------*/
 squareElems.forEach(function(OnesqrElm){
 OnesqrElm.addEventListener('click', handleClick)
-SetPlayer.addEventListener('click',SetPlayerfun)
 })
-
+SetPlayer.addEventListener('click',SetPlayerfun)
 HTPbtn.addEventListener('click', clickInstruction)
 closed.addEventListener('click', CloseWindow)
 CPU.addEventListener('click', setCpuTrue)
